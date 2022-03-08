@@ -13,7 +13,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--group_num', type=int, default=5, help='グループの数')
+    parser.add_argument('--group_num', type=int, default=4, help='グループの数')
     args = parser.parse_args()
 
     main(args)

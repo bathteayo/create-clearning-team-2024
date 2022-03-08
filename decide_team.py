@@ -8,8 +8,7 @@ class DecideTeam:
 
     def __init__(self, GROUP_NUM):
         self.GROUP_NUM = GROUP_NUM
-        self.MAX_LOOP_CNT = 1
-        # self.MAX_LOOP_CNT = 200000
+        self.MAX_LOOP_CNT = 200000
 
 
     def load_config(self, path):
@@ -46,14 +45,27 @@ class DecideTeam:
                     cur_start_ind = cur_end_ind
             else:
                 # 平均にならないグループを決定
-                cur_plus_one_groups = random.sample(plus_one_group_list, grade_plus_one_group_num)
-                for cur_plus_one_group in cur_plus_one_groups:
-                    plus_one_group_list.remove(cur_plus_one_group)  # 平均にならないグループリストから削除
+                cur_plus_one_groups = []  # 多く配置するグループ
+                cur_minus_one_groups = []  # 配置しないグループ
+                if len(plus_one_group_list) >= grade_plus_one_group_num:
+                    cur_plus_one_groups = random.sample(plus_one_group_list, grade_plus_one_group_num)
+                    for cur_plus_one_group in cur_plus_one_groups:
+                        plus_one_group_list.remove(cur_plus_one_group)  # 平均にならないグループリストから削除
+                else:
+                    cur_plus_one_groups = plus_one_group_list
+                    plus_one_group_list.clear()
+                    cur_minus_one_groups = random.sample(range(self.GROUP_NUM), grade_plus_one_group_num-len(plus_one_group_list))
+                    for cur_minus_one_group in cur_minus_one_groups:
+                        plus_one_group_list.append(cur_minus_one_group)
 
                 cur_start_ind = 0
                 for i in range(self.GROUP_NUM):
                     if i in cur_plus_one_groups:  # 平均にならないグループは一人多く配置
                         cur_end_ind = cur_start_ind + grade_mem_num_per_group + 1
+                    elif i in cur_minus_one_groups:
+                        if grade_mem_num_per_group == 0:
+                            continue
+                        cur_end_ind = cur_start_ind + grade_mem_num_per_group
                     else:
                         cur_end_ind = cur_start_ind + grade_mem_num_per_group
                     cur_team_members = grade_mem[cur_start_ind:cur_end_ind]
