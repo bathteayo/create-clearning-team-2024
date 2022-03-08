@@ -7,9 +7,20 @@ def output_team_yaml(team):
     team_dict = dict()
     for i, group in enumerate(team):
         team_dict[f"g{i+1}"] = group
-    with open("results/created_team.yaml", "w", encoding="utf-8") as file:
-        yaml.dump(team_dict, file, default_flow_style=False)
-    
+    with open("results/created_team.yaml", "w", encoding="utf-8") as f:
+        yaml.dump(team_dict, f, default_flow_style=False)
+
+def output_slack(team):
+    output_str = ""
+    for i, group in enumerate(team):
+        output_str += f"{i+1}. "
+        for member in group:
+            output_str += f"@{member} "
+        output_str += "\n"
+
+    with open("results/output_team_for_slack.txt", "w", encoding="utf-8") as f:
+        print(output_str, file=f)
+
 
 def main(args):
     decide_team = DecideTeam(args.group_num)
@@ -21,6 +32,7 @@ def main(args):
     print(team)
 
     output_team_yaml(team)
+    output_slack(team)
 
 
 if __name__ == '__main__':
