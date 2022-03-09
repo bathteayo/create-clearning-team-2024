@@ -19,12 +19,12 @@ $ conda activate cct_env
 
 
 ## 2. Usage
-You can create **five** group that meet the criteria (shown in 3. section).
+Executing following command, then you can create **five** group that meet the criteria (shown in 3. section).
 ```
 $ python main.py --group_num 5
 ```
 
-Following result files will be generated!
+Following results files will be generated!
 ```
 results/created_team.yaml
 results/output_team_for_slack
