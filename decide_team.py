@@ -117,8 +117,8 @@ class DecideTeam:
 
 
     def decide_team(self):
-        members = self.load_config("members.yml")
-        past_teams = self.load_config("past-teams.yml")
+        members = self.load_config("data/members.yml")
+        past_teams = self.load_config("data/past-teams.yml")
 
         min_not_first_cnt_team = [] # 初めましてが最も少ないチーム
         min_not_first_cnt = np.inf
