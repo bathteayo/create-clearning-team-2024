@@ -17,14 +17,11 @@ def output_slack(team):
         for member in group:
             output_str += f"@{member} "
         output_str += "\n"
-
     with open("results/output_team_for_slack.txt", "w", encoding="utf-8") as f:
         print(output_str, file=f)
 
-
 def main(args):
     decide_team = DecideTeam(args.group_num)
-
     team, not_first_cnt = decide_team.decide_team()
 
     print("------ decide team! ------")
@@ -33,7 +30,6 @@ def main(args):
 
     output_team_yaml(team)
     output_slack(team)
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
