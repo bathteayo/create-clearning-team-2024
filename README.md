@@ -10,7 +10,7 @@ $ git clone https://github.com/yunicoder/create-clearning-team.git
 1.2. Install python library
 ```
 # if you use pip:
-$ pip install -r requrements.txt
+$ pip install -r requirements.txt
 
 # if you use conda:
 $ conda env create --file conda.yml
