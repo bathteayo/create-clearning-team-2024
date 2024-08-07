@@ -1,4 +1,4 @@
-# Create Creaning-Team
+# Create Cleaning-Team
 
 This repository can create cleaning-team for azumi lab.
 
