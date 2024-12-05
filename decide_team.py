@@ -1,6 +1,6 @@
 
 import numpy as np
-import yaml
+import tomlkit as toml
 import itertools
 import random
 
@@ -13,7 +13,7 @@ class DecideTeam:
 
     def load_config(self, path):
         with open(path, encoding="utf-8") as file:
-            variables = yaml.load(file, Loader=yaml.FullLoader)
+            variables = toml.load(file).unwrap()
         return variables
 
 
@@ -117,8 +117,8 @@ class DecideTeam:
 
 
     def decide_team(self):
-        members = self.load_config("data/members.yml")
-        past_teams = self.load_config("data/past-teams.yml")
+        members = self.load_config("data/members.toml")
+        past_teams = self.load_config("data/past-teams.toml")
 
         min_not_first_cnt_team = [] # 初めましてが最も少ないチーム
         min_not_first_cnt = np.inf
