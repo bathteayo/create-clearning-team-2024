@@ -1,9 +1,7 @@
 B4 = [
     'fuma',
     'Hiroto',
-    'nomutaku',
-    'shun',
-    'teido'
+    'shun'
 ]
 
 M1 = [
@@ -11,15 +9,6 @@ M1 = [
     'tobatoba',
     'nogu',
     'Kenshin',
-    'Nagi'
-]
-
-M2 = [
-    'hassu-',
-    'Mac',
-    'tomi',
-    'yu-taro-',
-    'kobatomo',
-    'cyo-zen',
-    'Kosumosu'
+    'Nagi',
+    'teido'
 ]
